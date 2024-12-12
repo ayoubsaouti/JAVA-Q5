@@ -4,9 +4,8 @@ import com.helb.game_management.dto.GameDTO;
 import com.helb.game_management.entity.Game;
 import com.helb.game_management.repository.GameRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -14,9 +13,12 @@ public class GameService {
 
     private final GameRepository gameRepository;
 
+    @Value("${player.service.url}") // L'URL de l'API du Service de Gestion des Joueurs
+    private String playerServiceUrl;
+
     // Créer une nouvelle partie
     public Game createGame(GameDTO gameDTO) {
-        Game game = new Game(null,gameDTO.getDate(), gameDTO.getGameType(), gameDTO.getMaxScore(), gameDTO.getHostId());
+        Game game = new Game(null, gameDTO.getDate(), gameDTO.getGameType(), gameDTO.getMaxScore(), gameDTO.getHostId());
         return gameRepository.save(game);
     }
 

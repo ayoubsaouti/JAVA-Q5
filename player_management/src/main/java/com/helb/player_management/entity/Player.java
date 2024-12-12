@@ -16,6 +16,6 @@ public class Player {
     private String name; // Nom du joueur
     private String username; // Pseudonyme du joueur
     private String email; // Email du joueur
-    private int level; // Niveau du joueur
-    private int totalPoints; // Points totaux du joueur
+    private int level = 0; // Niveau du joueur
+    private int totalPoints = 0; // Points totaux du joueur
 }

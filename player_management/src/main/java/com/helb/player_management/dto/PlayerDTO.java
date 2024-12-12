@@ -12,5 +12,5 @@ public class PlayerDTO {
     private String username; // Pseudonyme du joueur
     private String email; // Email du joueur
     private int level; // Niveau du joueur
-    private int totalPoints; // Points totaux du joueur
+    private int score; // Points totaux du joueur
 }

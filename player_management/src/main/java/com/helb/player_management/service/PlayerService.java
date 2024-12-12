@@ -39,7 +39,7 @@ public class PlayerService {
                 playerDTO.getUsername(),
                 playerDTO.getEmail(),
                 playerDTO.getLevel(),
-                playerDTO.getTotalPoints()
+                playerDTO.getScore()
         );
         player = playerRepository.save(player);
         return new PlayerDTO(
@@ -61,7 +61,7 @@ public class PlayerService {
         player.setUsername(playerDTO.getUsername());
         player.setEmail(playerDTO.getEmail());
         player.setLevel(playerDTO.getLevel());
-        player.setTotalPoints(playerDTO.getTotalPoints());
+        player.setTotalPoints(playerDTO.getScore());
         
         player = playerRepository.save(player);
         
@@ -82,5 +82,22 @@ public class PlayerService {
         
         playerRepository.delete(player);
         return true;
+    }
+
+     // Méthode pour mettre à jour les points et le niveau du joueur après chaque victoire
+    public void updatePlayerStats(Long playerId, PlayerDTO playerDTO) {
+        // Récupérer le joueur depuis la base de données
+        Player player = playerRepository.findById(playerId)
+                .orElseThrow(() -> new RuntimeException("Player not found"));
+
+        int newScore = player.getTotalPoints() + 50;  // Ajouter 50 points pour chaque victoire
+        player.setTotalPoints(newScore);  // Mettre à jour le score
+
+        // Incrémenter le niveau du joueur
+        int newLevel = player.getLevel() + 1;  // Augmenter le niveau de 1
+        player.setLevel(newLevel);  // Mettre à jour le niveau
+
+        // Sauvegarder les changements dans la base de données
+        playerRepository.save(player);
     }
 }

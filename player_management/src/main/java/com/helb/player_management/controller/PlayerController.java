@@ -59,4 +59,14 @@ public class PlayerController {
             return ResponseEntity.status(404).body("Player not found");
         }
     }
+
+    // Endpoint pour mettre à jour les points et le niveau du joueur
+    @PutMapping("/{playerId}/stats")
+    public ResponseEntity<Void> updatePlayerStats(
+            @PathVariable Long playerId, 
+            @RequestBody PlayerDTO playerDTO) {
+            
+        playerService.updatePlayerStats(playerId, playerDTO);
+        return ResponseEntity.ok().build();
+    }
 }
