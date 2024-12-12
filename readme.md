@@ -1,7 +1,12 @@
 # Documentation
 
 ## Introduction
-The Game Management system is a backend application designed to manage game sessions, track player statistics, and facilitate game participation. This application uses Spring Boot for backend development and communicates with a player management system through REST API endpoints.
+The Game Management system is a backend application designed to manage game sessions, track player statistics, and facilitate game participation. This application is split into two main components:
+
+1. **Game Management**: Responsible for managing games, game sessions, and game participations.
+2. **Player Management**: Handles the player profiles, stats, levels, and friendships between players.
+
+Both components communicate through RESTful APIs.
 
 ## Table of Contents
 1. [Endpoints](#endpoints)
@@ -9,6 +14,7 @@ The Game Management system is a backend application designed to manage game sess
 3. [Database Structure](#database-structure)
 4. [Application Workflow](#application-workflow)
 5. [Player Management System](#player-management-system)
+6. [Installation Guide](#installation-guide)
 
 ---
 
@@ -148,7 +154,7 @@ The schema ensures efficient tracking of player scores and game results. The **g
 
 ## Player Management System
 
-The **Player Management** system handles the players' data, including player profiles, total scores, levels, and friends. It interacts with the **Game Management** system to update player scores and levels.
+The **Player Management** system handles the players' data, including player profiles, stats, levels, and friends. It interacts with the **Game Management** system to update player scores and levels.
 
 ### Player Endpoints
 
@@ -296,5 +302,18 @@ The **Player Management** system handles the players' data, including player pro
 
 ---
 
-## Conclusion
-This application allows for seamless management of games and players. By using RESTful APIs, we ensure that the system is modular, scalable, and easy to integrate with other services. The database design ensures that data is stored efficiently and maintains the integrity of game and player data.
+## Installation Guide
+
+### Prerequisites
+- **Java 11 or higher** installed (Spring Boot requires Java 11 or higher).
+- **Maven** (or **Gradle**) to manage dependencies.
+- **MySQL** (or any compatible database) installed and running.
+- **IDE** (e.g., IntelliJ IDEA, Eclipse) for development.
+
+### Steps for **Game Management** and **Player Management**
+
+1. **Clone both repositories**:
+   Clone the **Game Management** and **Player Management** repositories to your local machine:
+   ```bash
+   git clone https://github.com/yourusername/game-management.git
+   git clone https://github.com/yourusername/player-management.git
